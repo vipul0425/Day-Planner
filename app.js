@@ -8,6 +8,8 @@ const search = document.querySelector('#search');
 const collection = document.querySelector('#collection');
 const collectionDone = document.querySelector('#collection-done');
 const clearAllBtn = document.querySelector('#clearall');
+const shareAllBtn = document.querySelector('#shareall');
+const installApp = document.querySelector('#installapp');
 
 setInterval(clockFunction,1000);
 loadEventListeners();
@@ -116,6 +118,14 @@ function loadEventListeners(){
     // Search Item
 
     search.addEventListener('keyup', searchItem);
+
+    // share all
+
+    shareAllBtn.addEventListener('click',share);
+
+    // install app
+
+    installApp.addEventListener('click',install);
 
 }
 
@@ -263,3 +273,42 @@ function searchItem(e){
 
 }
 
+// share 
+
+function share() {
+    let notes = "";
+    if (localStorage.getItem('tasks')) {
+        notes = JSON.parse(localStorage.getItem('tasks'));
+        navigator.share({
+            title : "Day Planner",
+            text : notes
+        });
+    } else{
+        alert("Please add something to the list.")
+    }
+    
+}
+
+
+// insatll app
+let bip = null;
+window.addEventListener('beforeinstallprompt',event =>{
+    event.preventDefault();
+    bip = event;
+});
+
+function install() {
+    if (bip) {
+        bip.prompt();
+        console.log(bip);
+    } else {
+      alert(
+          `
+           1. Click on 3 dots at top right corner of your browser.
+           2. Find install app.
+           3. Click on it.
+          `
+      )
+    }
+}
+ 

@@ -5,10 +5,14 @@ body{
 }
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Caveat', cursive;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .navbar{
     background-color: #272822 !important;
+    
 }
 .navbar-brand span{
     font-weight: bolder;
@@ -94,3 +98,8 @@ h1,h2,h3,h4,h5,h6 {
      background: transparent;
      border: 1px solid rgb(82 82 82 / 32%)
     }
+@media (display-mode: standalone),(display-mode:minimal-ui){
+    #installapp{
+        display: none;
+    }
+}
