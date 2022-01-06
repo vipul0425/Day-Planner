@@ -1,0 +1,45 @@
+{
+    "name": "Day Planner",
+    "short_name": "Day Planner",
+    "start_url": "./",
+    "orientation": "any",
+    "theme_color": "#da2d2d",
+    "scope": "./",
+    "display": "standalone",
+    "description" : "This app helps you to plan your day by writing down the task and marking as done when you complete it.",
+    "icons" : [
+        {
+            "src": "icons/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+          "src" : "icons/logo-1024.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
+        },
+        {
+            "src": "icons/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots" : [
+        {
+          "src": "screenshot/screenshot1.png",
+          "sizes": "563x1218",
+          "type": "image/png"
+        },
+        {
+            "src" : "screenshot/screenshot2.png",
+            "sizes" : "563x1218",
+            "type" : "image/png"
+        },
+        {
+            "src" : "screenshot/screenshot3.png",
+            "sizes" : "563x1218",
+            "type" : "image/png"
+        }
+    ]
+}

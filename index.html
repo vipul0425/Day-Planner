@@ -2,102 +2,123 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- theme-color -->
+  <meta name="theme-color" content="#da2d2d">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- manifest -->
+  <link rel="manifest" href="app.webmanifest">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <!-- My Css-->
-    <link rel="stylesheet" href="style.css">
+  <!-- My Css-->
+  <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Raleway:ital@1&display=swap"
+    rel="stylesheet">
+  <!-- apple-touch-icon -->
+  <link rel="apple-touch-icon" href="icons/logo-512.png">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Raleway:ital@1&display=swap"
-        rel="stylesheet">
 
-    <title>Day Planner | Write Your Daily Tasks Here</title>
+  <!-- Script -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("serviceworker.js");
+    }
+  </script>
+
+  <title>Day Planner | Write Your Daily Tasks Here</title>
 </head>
 
 <body>
 
-    <nav>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-4 col-lg-3 mt-2"><p class="fs-6"><span id="date"></span><br>
-              <span id="day"></span></p></div>
-            <div class="col-4 col-lg-6"><a class="navbar-brand text-center fs-1 text-white" href="#">
-              <h1><span>DAY</span> PLANNER</h1>
-            </a></div>
-            <div class="col-4 col-lg-3 d-flex justify-content-end mt-2"><p class="fs-5"><span id="time"></span></p></div>
+  <nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 col-lg-3 mt-2">
+          <p class="fs-6"><span id="date"></span><br>
+            <span id="day"></span>
+          </p>
+        </div>
+        <div class="col-4 col-lg-6"><a class="navbar-brand text-center fs-1 text-white" href="#">
+            <h1><span>DAY</span> PLANNER</h1>
+          </a></div>
+        <div class="col-4 col-lg-3 d-flex justify-content-end mt-2">
+          <p class="fs-5"><span id="time"></span></p>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card text-center">
+          <div class="card-header">
+            <h4 class="card-title my-3"><span class="mark-heading">What Are You Planning To do Today?</span></h4>
+          </div>
+          <div class="card-body">
+            <div class="container">
+
+              <form id="task-form">
+                <div class="d-lg-flex justify-content-evenly">
+                  <div>
+                    <input type="text" name="Task" id="task" class="form-control task-input" placeholder="Add a Task">
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-submit my-lg-0 my-4">Add To List </button>
+                  </div>
+                </div>
+              </form>
+
+              <h4 class="card-title my-3 my-lg-5"><span class="mark-heading">Things To do Today</span></h4>
+
+              <div class="d-lg-flex justify-content-evenly my-4">
+                <div>
+                  <p class="text-muted mt-3">Can't find your task ? 👀</p>
+                </div>
+                <div>
+                  <input type="text" name="Search" id="search" class="form-control task-input"
+                    placeholder="Search Here 🔎">
+                </div>
+              </div>
+
+              <ul class="list-group list-group-flush" id="collection">
+
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <div class="container">
+              <ul class="list-group list-group-flush" id="collection-done">
+
+              </ul>
+              <button class="btn btn-submit my-4" id="clearall">Clear List</button>
+              <button class="btn btn-submit my-4" id="shareall">Share List</button>
+              <button class="btn btn-submit my-4" id="installapp">Install App</button>
+            </div>
           </div>
         </div>
-      </nav>
-
-      <div class="container">
-         <div class="row">
-           <div class="col-12">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h4 class="card-title my-3"><span class="mark-heading">What Are You Planning To do Today?</span></h4>
-                </div>
-                <div class="card-body">
-                    <div class="container">
- 
-                    <form id="task-form">
-                      <div class="d-lg-flex justify-content-evenly">
-                          <div>
-                              <input type="text" name="Task" id="task" class="form-control task-input" placeholder="Add a Task">
-                            </div>
-                        <div>
-                        <button type="submit" class="btn btn-submit my-lg-0 my-4">Add To List </button>
-                    </div>
-                      </div>
-                    </form>
-               
-                  <h4 class="card-title my-3 my-lg-5"><span class="mark-heading">Things To do Today</span></h4>
-                  
-                  <div class="d-lg-flex justify-content-evenly my-4">
-                    <div>
-                        <p class="text-muted mt-3">Can't find your task ? 👀</p>
-                      </div>
-                  <div>
-                    <input type="text" name="Search" id="search" class="form-control task-input" placeholder="Search Here 🔎">
-              </div>
-                </div>
-
-                  <ul class="list-group list-group-flush" id="collection">
-                    
-                  </ul>
-                </div>
-            </div>
-                <div class="card-footer text-muted">
-                    <div class="container">
-                    <ul class="list-group list-group-flush" id="collection-done">
-                        
-                      </ul>
-                      <button class="btn btn-submit my-4" id="clearall">Clear List</button>
-                    </div>
-                </div>
-              </div>
-           </div>
-         </div>
       </div>
+    </div>
+  </div>
 
 
-    <!--  Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+  <!--  Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
 
 </body>
 
